@@ -10,8 +10,7 @@ Representa una estructura de control (if) para el lenguaje de programación emoj
 
 ### Cadenas aceptadas
 
-<code>
-<pre>
+```
 ▶
     ❓(4 <= 1)➡
         ❓(1 == 2)➡
@@ -19,29 +18,23 @@ Representa una estructura de control (if) para el lenguaje de programación emoj
         ❗
     ❗
 ⏹
-</pre>
-</code>
+```
 
-<code>
-<pre>
+```
 ▶
    🖨'hola mundus!'
 ⏹
-</code>
-</pre>
+```
 
-<code>
-<pre>
+```
 ▶
     ❓(1 >= 2)➡
         🖨'hola mundus!'
     ❗
 ⏹
-</code>
-</pre>
+```
 
-<code>
-<pre>
+```
 ▶
     ❓(4 > 2)➡
     ❓(1 > 1)➡
@@ -53,20 +46,16 @@ Representa una estructura de control (if) para el lenguaje de programación emoj
     ❗
     ❗
 ⏹
-</pre>
-</code>
+```
 
 ### Cadenas rechazadas
     
-<pre>
-<code>
+```
 ▶
 ⏹
-</code>
-</pre>
+```
 
-<code>
-<pre>
+```
 ▶
     ❓(4 > 2)➡
     ❓(1 > 1)➡
@@ -79,41 +68,32 @@ Representa una estructura de control (if) para el lenguaje de programación emoj
     ❗
     ❗
 ⏹
-</code>
-</pre>
+```
 
-<code>
-<pre>
+```
 ▶
     ❓(4 > 2)➡
     ❗
 ⏹
-</code>
-</pre>
+```
 
-<code>
-<pre>
+```
 ▶
     ❓(4 >>> 2)➡
     ❗
 ⏹
-</code>
-</pre>
+```
 
-<code>
-<pre>
+```
 ▶
     ❓(4> 2)➡
     🖨'hola mundus!'
 ⏹
-</code>
-</pre>
+```
 
-<code>
-<pre>
+```
 ▶
     ❓(4> 2)➡
     🖨'hola mundus!'
     ❗
-</pre>
-</code>
+```
