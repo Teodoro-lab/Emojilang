@@ -41,7 +41,7 @@ Representa una estructura de control (if) para el lenguaje de programación emoj
     ❗
     ❗
 ⏹
-<pre>
+</pre>
 </code>
 
 ### Cadenas rechazadas
@@ -83,5 +83,5 @@ Representa una estructura de control (if) para el lenguaje de programación emoj
     ❓(4> 2)➡
     🖨'hola mundus!'
     ❗
-<pre>
+</pre>
 </code>
