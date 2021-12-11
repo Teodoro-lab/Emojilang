@@ -3,12 +3,25 @@ import re
 stack = []
 
 def P(string):
+	"""
+	First part of the compiler eliminates all the spaces
+	in order to have a single line string to be parsed
+	:param string:
+	:return:
+	"""
 	string = re.sub(r'\s', "", string)
 	stack.append("#")
 	Q(string)
 
 
 def Q(string):
+	"""
+	This functions contains all the rules that our language have
+	and consume the string.
+	:param string:
+	:return:
+	"""
+
 	# e / <>... <= ... >= ... < ... > / BOOLEAN
 	if stack[-1] in ('<>', '<=', '>=', '<', '>'):
 		del(stack[-1])
@@ -144,6 +157,11 @@ def Q(string):
 		F(string)
 
 def F(string):
+	"""
+	The function validates if the compilation was successful or not
+	:param string:
+	:return:
+	"""
 	if stack == ['#'] and string == "":
 		print("Successful compilation")
 		return 0

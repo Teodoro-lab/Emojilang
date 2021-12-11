@@ -3,6 +3,12 @@ import gramatica
 
 
 def readfile(filename):
+	"""
+	The function returns the string without preprocessing and reads directly from a file
+	with emojilang source code. It generates a fileNotFound error if the path is pass incorrectly
+	:param filename:
+	:return:
+	"""
 	file = open(f'{filename}.🙂', 'r', encoding='utf-8')
 	token = file.read()
 	return token
