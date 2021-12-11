@@ -28,13 +28,13 @@ def Q(string):
 		Q(string)
 
 	# e / )NUMBER BOOLEAN NUMBER( / CONDITION
-	elif "".join(stack[-5:]) == "(NUMBERBOOLEANNUMBER)":
+	elif "".join(stack[-1:-6:-1]) == ")NUMBERBOOLEANNUMBER(":
 		del(stack[-5:])
 		stack.append("CONDITION")
 		Q(string)
 
 	# e / STRING🖨 / BODY
-	elif "".join(stack[-2:]) == "🖨STRING":
+	elif "".join(stack[-1:-3:-1]) == "STRING🖨":
 		del(stack[-2:])
 		stack.append("BODY")
 		Q(string)
@@ -46,20 +46,26 @@ def Q(string):
 		Q(string)
 
 	# e / !BODY👉CONDITION❓ / IF_STAT
-	elif "".join(stack[-5:]) == "❓CONDITION➡BODY❗":
+	elif "".join(stack[-1:-6:-1]) == "❗BODY➡CONDITION❓":
 		del(stack[-5:])
 		stack.append("IF_STAT")
 		Q(string)
 
 	# e / ⏹ IF_STAT ▶ / PROGRAM
-	elif "".join(stack[-3:]) == "▶IF_STAT⏹":
+	elif "".join(stack[-1:-4:-1]) == "⏹IF_STAT▶":
 		del(stack[-3:])
 		stack.append("PROGRAM")
 		Q(string)
 
-	elif "".join(stack[-3:]) == "▶BODY⏹":
+	# e / ⏹BODY▶ / PROGRAM
+	elif "".join(stack[-1:-4:-1]) == "⏹BODY▶":
 		del(stack[-3:])
 		stack.append("PROGRAM")
+		Q(string)
+
+	# e / PROGRAM / e
+	elif stack[-1] == "PROGRAM":
+		del(stack[-1])
 		Q(string)
 
 	# ⏹ / e / ⏹
@@ -111,8 +117,14 @@ def Q(string):
 		Q(string)
 	
 	# '<>', '<=', '>=', '<', '>' / e / '<>', '<=', '>=', '<', '>'
-	elif string != "" and (string[0:2] in ('<>', '<=', '>=') or string[0] in ('<', '>')):
+	elif len(string) > 2 and string[0:2] in ('<>', '<=', '>=', '=='):
+		#hicimos una pequeña trampa aquí jeje :P
 		stack.append('<')
+		string = string[2:]
+		Q(string)
+
+	elif string != "" and string[0] in ('<', '>'):
+		stack.append(string[0])
 		string = string[1:]
 		Q(string)
 	
@@ -121,7 +133,8 @@ def Q(string):
 		stack.append(string[0])
 		string = string[1:]
 		Q(string)
-	
+
+	# 'holamundus!' / e / 'holamundus!'
 	elif string.startswith("'holamundus!'"):
 		stack.append("'holamundus!'")
 		string = string[len("'holamundus!'"):]
@@ -131,10 +144,10 @@ def Q(string):
 		F(string)
 
 def F(string):
-	if stack == ['#', 'PROGRAM'] and string == "":
+	if stack == ['#'] and string == "":
 		print("Successful compilation")
 		return 0
-	print("Compilation failed")
+	print("Compilation failed : following strings could't be parsed\n", stack)
 	return 1
 	
 

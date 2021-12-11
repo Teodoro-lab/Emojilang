@@ -9,6 +9,12 @@ def readfile(filename):
 
 
 def main():
+	"""
+	You can pass the name of the file to be compiled as a console argument
+	by running:
+
+	# python main.py hola
+	"""
 	consoleArguments = sys.argv
 	if len(consoleArguments) < 2:
 		raise Exception('File doesn\'t found. Provide a file to be compiled')
