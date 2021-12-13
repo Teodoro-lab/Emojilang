@@ -9,9 +9,13 @@ def readfile(filename):
 	:param filename:
 	:return:
 	"""
-	file = open(f'{filename}.🙂', 'r', encoding='utf-8')
-	token = file.read()
-	return token
+	if(filename[-2:] == '.🙂'):
+		file = open(f'{filename}', 'r', encoding='utf-8')
+		token = file.read()
+		return token
+	else:
+		raise Exception("Use the correct file extension '🙂'")
+		
 
 
 def main():
@@ -23,9 +27,10 @@ def main():
 	"""
 	consoleArguments = sys.argv
 	if len(consoleArguments) < 2:
-		raise Exception('File doesn\'t found. Provide a file to be compiled')
+		raise Exception('Provide a file to be compiled')
 	filename = consoleArguments.pop()
-	gramatica.P(readfile(filename))
+	programString = readfile(filename)
+	gramatica.P(programString)
 
 
 if __name__ == '__main__':
